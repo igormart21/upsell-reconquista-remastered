@@ -109,11 +109,15 @@
       </section>
     </main>
 
-    <div id="hotmart-sales-funnel"></div>
+    <div id="hotmart-sales-funnel" style="display: none;"></div>
 
     <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
     <script>
-      checkoutElements.init("salesFunnel").mount("#hotmart-sales-funnel");
+      setTimeout(function () {
+        var hotmartContainer = document.getElementById("hotmart-sales-funnel");
+        hotmartContainer.style.display = "block";
+        checkoutElements.init("salesFunnel").mount("#hotmart-sales-funnel");
+      }, 290000);
     </script>
 
     <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7f102f78-9be1-41e8-a92a-3fe5fe747719/players/69fb48cb1b6c5fdae7b31c58/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
