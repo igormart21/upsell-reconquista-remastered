@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="AppStalker: el tablero de transparencia digital para parejas que eligen el mismo juego. 19 USD/mes. Cancela cuando quieras."
+      content="AppStalker: El control total de tu realidad digital. Descubre la verdad y recupera tu paz mental."
     />
-    <title>AppStalker — Claridad en la pareja, sin espionaje</title>
+    <title>AppStalker — La Verdad a Tu Alcance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,500&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #050508;
-        --surface: #0e1018;
-        --elevated: #141824;
-        --border: rgba(255, 255, 255, 0.08);
-        --text: #f6f7fb;
-        --muted: #8b93a7;
-        --accent: #7c5cff;
-        --accent-2: #22d3ee;
+        --bg: #030305;
+        --surface: #0a0a0f;
+        --elevated: #11111a;
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #ffffff;
+        --muted: #94a3b8;
+        --accent: #8b5cf6;
+        --accent-2: #d946ef;
+        --danger: #ef4444;
         --gold: #fbbf24;
-        --success: #34d399;
-        --radius: 18px;
-        --radius-sm: 12px;
-        --max: 1140px;
-        --shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
-        --glow: 0 0 80px rgba(124, 92, 255, 0.22);
+        --success: #10b981;
+        --radius: 20px;
+        --max: 1200px;
+        --shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+        --glow: 0 0 40px rgba(139, 92, 246, 0.3);
       }
 
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
       html {
@@ -42,1090 +44,560 @@
       }
 
       body {
-        margin: 0;
-        font-family: "DM Sans", system-ui, sans-serif;
+        font-family: "Outfit", sans-serif;
         background: var(--bg);
         color: var(--text);
-        line-height: 1.6;
-        font-size: 1.02rem;
+        line-height: 1.5;
+        overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
       }
 
       .noise {
-        pointer-events: none;
         position: fixed;
         inset: 0;
-        opacity: 0.035;
+        opacity: 0.05;
         z-index: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
       .wrap {
-        width: 100%;
         max-width: var(--max);
         margin: 0 auto;
-        padding-left: 22px;
-        padding-right: 22px;
+        padding: 0 24px;
         position: relative;
         z-index: 1;
       }
 
-      .topbar {
-        background: linear-gradient(90deg, #1a0f2e 0%, #0f1628 50%, #0a1a22 100%);
-        border-bottom: 1px solid var(--border);
-        padding: 11px 16px;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #c4c9d8;
-        position: relative;
-        z-index: 2;
-      }
-
-      .topbar strong {
-        color: var(--gold);
-        font-weight: 700;
-      }
-
+      /* Navigation */
       nav {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        backdrop-filter: blur(20px);
+        background: rgba(3, 3, 5, 0.8);
+        border-bottom: 1px solid var(--border);
         position: sticky;
         top: 0;
-        z-index: 50;
-        backdrop-filter: blur(14px);
-        background: rgba(5, 5, 8, 0.78);
-        border-bottom: 1px solid var(--border);
+        z-index: 100;
       }
 
       .nav-inner {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        gap: 16px;
-        padding: 14px 22px;
-        max-width: var(--max);
-        margin: 0 auto;
+        align-items: center;
+        width: 100%;
       }
 
       .logo {
         font-family: "Syne", sans-serif;
         font-weight: 800;
-        font-size: 1.35rem;
-        letter-spacing: -0.03em;
-        color: var(--text);
+        font-size: 1.6rem;
         text-decoration: none;
+        color: #fff;
+        letter-spacing: -1px;
       }
 
       .logo span {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        background: linear-gradient(to right, var(--accent), var(--accent-2));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
 
-      .nav-cta {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 18px;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 0.88rem;
+      .btn-nav {
+        background: #fff;
+        color: #000;
+        padding: 10px 22px;
+        border-radius: 99px;
         text-decoration: none;
-        color: #0a0614;
-        background: linear-gradient(135deg, #fff 0%, #e8e4ff 100%);
-        box-shadow: 0 4px 24px rgba(124, 92, 255, 0.35);
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: 0.3s;
       }
 
-      .nav-cta:hover {
-        transform: translateY(-1px);
+      .btn-nav:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
       }
 
+      /* Hero */
       .hero {
-        padding: 48px 0 72px;
+        padding: 100px 0 120px;
+        text-align: center;
         position: relative;
-        overflow: hidden;
       }
 
-      .hero::before {
-        content: "";
+      .hero-glow {
         position: absolute;
-        top: -40%;
+        top: -200px;
         left: 50%;
         transform: translateX(-50%);
-        width: 120%;
-        height: 90%;
-        background: radial-gradient(ellipse, rgba(124, 92, 255, 0.18) 0%, transparent 65%);
+        width: 800px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
         pointer-events: none;
-      }
-
-      .hero-grid {
-        display: grid;
-        gap: 40px;
-        align-items: center;
-        grid-template-columns: 1fr;
-      }
-
-      @media (min-width: 960px) {
-        .hero-grid {
-          grid-template-columns: 1.05fr 0.95fr;
-          gap: 56px;
-        }
+        z-index: 0;
       }
 
       .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--accent-2);
-        margin-bottom: 18px;
-      }
-
-      .eyebrow::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--success);
-        box-shadow: 0 0 12px var(--success);
+        letter-spacing: 3px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        margin-bottom: 24px;
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(139, 92, 246, 0.1);
+        border-radius: 99px;
+        border: 1px solid rgba(139, 92, 246, 0.2);
       }
 
       h1 {
         font-family: "Syne", sans-serif;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        line-height: 1;
         font-weight: 800;
-        font-size: clamp(2.1rem, 5.2vw, 3.15rem);
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-        margin: 0 0 20px;
+        letter-spacing: -2px;
+        margin-bottom: 32px;
       }
 
-      h1 .grad {
-        background: linear-gradient(135deg, #fff 0%, #b8a8ff 45%, var(--accent-2) 100%);
+      h1 span {
+        display: block;
+        background: linear-gradient(135deg, #fff 30%, var(--muted) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
       }
 
-      .lead {
-        font-size: 1.12rem;
+      .hero-desc {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
         color: var(--muted);
-        max-width: 34rem;
-        margin: 0 0 28px;
-        line-height: 1.65;
+        max-width: 800px;
+        margin: 0 auto 48px;
       }
 
-      .lead strong {
-        color: #dce0ee;
-        font-weight: 600;
-      }
-
-      .hero-bullets {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 28px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .hero-bullets li {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        font-size: 0.95rem;
-        color: #c8cedd;
-      }
-
-      .hero-bullets svg {
-        flex-shrink: 0;
-        margin-top: 3px;
-        color: var(--success);
-      }
-
-      .btn-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        align-items: center;
-        margin-bottom: 18px;
+      .hero-desc strong {
+        color: #fff;
       }
 
       .btn-main {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 17px 28px;
-        border-radius: 999px;
+        gap: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 20px 48px;
+        border-radius: 99px;
+        font-size: 1.2rem;
         font-weight: 800;
-        font-size: 1rem;
         text-decoration: none;
-        color: #0a0614;
-        background: linear-gradient(135deg, #ffffff 0%, #d4c9ff 55%, #a5f3fc 100%);
-        box-shadow: var(--glow), 0 12px 40px rgba(0, 0, 0, 0.35);
-        border: none;
-        cursor: pointer;
-        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        box-shadow: var(--glow);
+        transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
       }
 
       .btn-main:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--glow), 0 18px 50px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(139, 92, 246, 0.4);
       }
 
-      .btn-ghost {
-        padding: 14px 20px;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 0.92rem;
-        color: var(--muted);
-        text-decoration: none;
-        border: 1px solid var(--border);
-      }
-
-      .trust-mini {
-        font-size: 0.84rem;
-        color: var(--muted);
-      }
-
-      .trust-mini b {
-        color: var(--gold);
-        font-weight: 700;
-      }
-
-      .mock-wrap {
+      .hero-mockup {
+        margin-top: 80px;
         position: relative;
+        perspective: 1000px;
       }
 
-      .mock-glow {
-        position: absolute;
-        inset: -20%;
-        background: radial-gradient(circle at 50% 50%, rgba(124, 92, 255, 0.35), transparent 55%);
-        filter: blur(40px);
-        opacity: 0.9;
-        pointer-events: none;
-      }
-
-      .mock-phone {
-        position: relative;
-        margin: 0 auto;
-        max-width: 340px;
-        border-radius: 36px;
-        padding: 14px;
-        background: linear-gradient(160deg, #2a2540 0%, #12141f 40%, #0a0c12 100%);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: var(--shadow);
-      }
-
-      .mock-notch {
-        height: 22px;
-        width: 110px;
-        margin: 0 auto 12px;
-        background: #0a0a10;
-        border-radius: 0 0 16px 16px;
-      }
-
-      .mock-screen {
+      .hero-mockup img {
+        max-width: 900px;
+        width: 100%;
         border-radius: 24px;
-        overflow: hidden;
-        background: linear-gradient(180deg, #161a28 0%, #0d0f16 100%);
+        box-shadow: var(--shadow);
         border: 1px solid var(--border);
+        transform: rotateX(10deg);
+        transition: 0.5s;
       }
 
-      .mock-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--border);
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #a8b0c4;
+      .hero-mockup:hover img {
+        transform: rotateX(0deg) scale(1.02);
       }
 
-      .mock-dots {
-        display: flex;
-        gap: 5px;
-      }
-
-      .mock-dots span {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #3b3f52;
-      }
-
-      .mock-body {
-        padding: 18px 16px 22px;
-      }
-
-      .mock-card {
-        background: var(--elevated);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        padding: 14px;
-        margin-bottom: 10px;
-      }
-
-      .mock-card small {
-        display: block;
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--accent-2);
-        margin-bottom: 6px;
-      }
-
-      .mock-card strong {
-        font-size: 0.95rem;
-      }
-
-      .mock-bar {
-        height: 6px;
-        border-radius: 99px;
-        background: #252a3d;
-        margin-top: 10px;
-        overflow: hidden;
-      }
-
-      .mock-bar i {
-        display: block;
-        height: 100%;
-        width: 72%;
-        border-radius: 99px;
-        background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      }
-
+      /* Sections */
       section {
-        padding: 72px 0;
-        position: relative;
-        z-index: 1;
+        padding: 100px 0;
       }
 
-      section.alt {
-        background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .section-head {
+      .section-title {
         text-align: center;
-        max-width: 720px;
-        margin: 0 auto 48px;
+        margin-bottom: 64px;
       }
 
-      .section-kicker {
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 10px;
-      }
-
-      h2 {
+      .section-title h2 {
         font-family: "Syne", sans-serif;
+        font-size: clamp(2rem, 5vw, 3rem);
         font-weight: 800;
-        font-size: clamp(1.65rem, 3.5vw, 2.35rem);
-        line-height: 1.15;
-        margin: 0 0 14px;
-        letter-spacing: -0.02em;
+        margin-bottom: 16px;
       }
 
-      .section-lead {
-        margin: 0;
+      .section-title p {
         color: var(--muted);
-        font-size: 1.05rem;
-        line-height: 1.65;
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
       }
 
+      /* Pain Points */
       .pain-grid {
         display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
       }
 
       .pain-card {
-        padding: 26px 22px;
+        background: var(--surface);
+        padding: 40px;
         border-radius: var(--radius);
-        background: var(--elevated);
         border: 1px solid var(--border);
-        position: relative;
-        overflow: hidden;
+        transition: 0.3s;
       }
 
-      .pain-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent), var(--accent-2));
-        opacity: 0.85;
+      .pain-card:hover {
+        border-color: var(--accent);
+        background: var(--elevated);
+        transform: translateY(-10px);
+      }
+
+      .pain-card i {
+        display: block;
+        font-size: 2.5rem;
+        margin-bottom: 24px;
+        color: var(--accent);
       }
 
       .pain-card h3 {
-        margin: 0 0 10px;
-        font-size: 1.08rem;
-        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 16px;
       }
 
       .pain-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.96rem;
-      }
-
-      .stats {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 32px 48px;
-        margin-top: 40px;
-        padding: 28px;
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        background: rgba(20, 24, 36, 0.6);
-      }
-
-      .stat strong {
-        display: block;
-        font-family: "Syne", sans-serif;
-        font-size: 1.85rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #fff, #c4b5fd);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-
-      .stat span {
-        font-size: 0.82rem;
         color: var(--muted);
       }
 
-      .features {
+      /* Features */
+      .features-list {
         display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 80px;
       }
 
-      .feat {
-        padding: 24px 22px;
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        background: rgba(14, 16, 24, 0.85);
-        transition: border-color 0.2s ease, transform 0.2s ease;
-      }
-
-      .feat:hover {
-        border-color: rgba(124, 92, 255, 0.35);
-        transform: translateY(-3px);
-      }
-
-      .feat-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 14px;
+      .feature-item {
         display: grid;
-        place-items: center;
-        margin-bottom: 14px;
-        background: rgba(124, 92, 255, 0.15);
-        color: #c4b5fd;
-      }
-
-      .feat h3 {
-        margin: 0 0 8px;
-        font-size: 1.05rem;
-        font-weight: 800;
-      }
-
-      .feat p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.94rem;
-      }
-
-      .compare {
-        max-width: 820px;
+        grid-template-columns: 1fr;
+        align-items: center;
+        gap: 40px;
+        text-align: center;
+        max-width: 800px;
         margin: 0 auto;
-        border-radius: var(--radius);
-        overflow: hidden;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
       }
 
-      .compare-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 0;
-        font-size: 0.88rem;
-      }
-
-      @media (max-width: 640px) {
-        .compare-row {
+      @media (max-width: 960px) {
+        .feature-item {
           grid-template-columns: 1fr;
+          text-align: center;
         }
-        .compare-row > div {
-          border-bottom: 1px solid var(--border);
+        .feature-item:nth-child(even) .feature-content {
+          order: 1;
         }
       }
 
-      .compare-head {
-        background: var(--elevated);
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        font-size: 0.72rem;
+      .feature-content h3 {
+        font-size: 2.2rem;
+        margin-bottom: 24px;
+        font-family: "Syne", sans-serif;
       }
 
-      .compare-head div,
-      .compare-row > div {
-        padding: 14px 16px;
-        border-right: 1px solid var(--border);
-      }
-
-      .compare-head div:last-child,
-      .compare-row > div:last-child {
-        border-right: none;
-      }
-
-      .compare-row:nth-child(even) {
-        background: rgba(14, 16, 24, 0.5);
-      }
-
-      .compare-row:nth-child(odd):not(.compare-head) {
-        background: rgba(10, 12, 18, 0.85);
-      }
-
-      .ok {
-        color: var(--success);
-        font-weight: 700;
-      }
-
-      .bad {
-        color: #f87171;
-        font-weight: 700;
-      }
-
-      .testimonials {
-        display: grid;
-        gap: 18px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-
-      .quote {
-        padding: 24px;
-        border-radius: var(--radius);
-        border: 1px solid var(--border);
-        background: var(--elevated);
-      }
-
-      .quote p {
-        margin: 0 0 16px;
-        font-size: 0.98rem;
-        color: #d1d6e6;
-        font-style: italic;
-      }
-
-      .quote footer {
-        font-size: 0.85rem;
+      .feature-content p {
+        font-size: 1.1rem;
         color: var(--muted);
-        border: none;
-        padding: 0;
-        text-align: left;
+        margin-bottom: 32px;
       }
 
-      .quote footer strong {
-        color: var(--text);
+      .feature-badge {
+        display: inline-block;
+        color: var(--accent-2);
+        font-weight: 800;
+        margin-bottom: 12px;
+        font-size: 0.9rem;
       }
 
-      .pricing-block {
-        max-width: 460px;
+      .feature-img img {
+        width: 100%;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+      }
+
+      /* Pricing */
+      .pricing {
+        background: radial-gradient(circle at center, #111 0%, #030305 100%);
+      }
+
+      .pricing-card {
+        max-width: 500px;
         margin: 0 auto;
-        padding: 36px 28px 32px;
-        border-radius: 24px;
-        border: 1px solid rgba(124, 92, 255, 0.35);
-        background: linear-gradient(165deg, #1a1730 0%, #10121c 50%, #0a0c12 100%);
-        box-shadow: var(--glow), var(--shadow);
+        background: var(--elevated);
+        padding: 60px 40px;
+        border-radius: 32px;
+        border: 2px solid var(--accent);
         text-align: center;
         position: relative;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.5);
       }
 
-      .pricing-badge {
+      .pricing-card::before {
+        content: "OFERTA POR TIEMPO LIMITADO";
         position: absolute;
-        top: -12px;
+        top: -15px;
         left: 50%;
         transform: translateX(-50%);
-        background: linear-gradient(90deg, var(--gold), #f59e0b);
-        color: #1a1204;
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 8px 16px;
-        border-radius: 999px;
-        white-space: nowrap;
+        background: var(--accent);
+        padding: 6px 20px;
+        border-radius: 99px;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 1px;
       }
 
-      .price-big {
+      .price {
+        font-size: 4rem;
+        font-weight: 900;
+        margin: 24px 0;
         font-family: "Syne", sans-serif;
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 8px 0 4px;
-        letter-spacing: -0.03em;
       }
 
-      .price-big span {
-        font-size: 1.1rem;
-        font-weight: 600;
+      .price span {
+        font-size: 1.2rem;
         color: var(--muted);
+        font-weight: 500;
       }
 
       .price-list {
-        text-align: left;
-        margin: 22px 0 24px;
-        padding: 0;
         list-style: none;
+        text-align: left;
+        margin-bottom: 40px;
       }
 
       .price-list li {
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border);
-        font-size: 0.93rem;
-        color: #c8cedd;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
         display: flex;
-        gap: 10px;
-        align-items: flex-start;
-      }
-
-      .price-list li:last-child {
-        border-bottom: none;
-      }
-
-      .faq-wrap {
-        max-width: 760px;
-        margin: 0 auto;
-      }
-
-      details.faq-item {
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        margin-bottom: 10px;
-        background: var(--elevated);
-        overflow: hidden;
-      }
-
-      details.faq-item summary {
-        padding: 16px 18px;
-        font-weight: 700;
-        cursor: pointer;
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
         align-items: center;
         gap: 12px;
       }
 
-      details.faq-item summary::-webkit-details-marker {
-        display: none;
+      .price-list li::before {
+        content: "✓";
+        color: var(--success);
+        font-weight: 900;
       }
 
-      details.faq-item summary::after {
-        content: "+";
-        font-size: 1.25rem;
-        color: var(--accent);
-        font-weight: 800;
-      }
-
-      details.faq-item[open] summary::after {
-        content: "−";
-      }
-
-      details.faq-item p {
-        margin: 0;
-        padding: 0 18px 16px;
-        color: var(--muted);
-        font-size: 0.94rem;
-        line-height: 1.6;
-      }
-
-      .sticky-cta {
-        text-align: center;
-        padding: 40px 22px;
-        background: linear-gradient(90deg, rgba(124, 92, 255, 0.12), rgba(34, 211, 238, 0.08));
+      /* Footer */
+      footer {
+        padding: 80px 0;
         border-top: 1px solid var(--border);
-      }
-
-      .sticky-cta h2 {
-        margin-bottom: 10px;
-      }
-
-      footer.site-footer {
-        padding: 36px 22px 48px;
         text-align: center;
-        font-size: 0.78rem;
         color: var(--muted);
-        border-top: 1px solid var(--border);
       }
 
-      .legal-box {
-        max-width: 720px;
-        margin: 0 auto 20px;
-        padding: 16px 18px;
-        border-radius: var(--radius-sm);
-        border: 1px solid rgba(248, 113, 113, 0.25);
-        background: rgba(127, 29, 29, 0.12);
-        color: #fecaca;
-        line-height: 1.55;
+      .footer-logo {
+        margin-bottom: 24px;
+      }
+
+      .warning-box {
+        background: rgba(239, 68, 68, 0.05);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 40px auto 0;
+        color: #fca5a5;
+        font-size: 0.85rem;
         text-align: left;
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 768px) {
+        h1 { font-size: 3rem; }
+        .hero { padding: 60px 0 80px; }
+      }
+
+      .delayed-content {
+        display: none;
       }
     </style>
   </head>
   <body>
-    <div class="noise" aria-hidden="true"></div>
+    <div class="noise"></div>
 
-    <div class="topbar">
-      <strong>Consentimiento mutuo obligatorio.</strong> AppStalker no ofrece ni respalda acceso oculto a cuentas de terceros. Uso responsable y conforme a la ley.
-    </div>
-
-    <nav>
-      <div class="nav-inner">
-        <a class="logo" href="#">App<span>Stalker</span></a>
-        <a class="nav-cta" href="#precio">Empezar — 19 USD/mes</a>
+    <nav class="delayed-content">
+      <div class="wrap nav-inner">
+        <a href="#" class="logo">App<span>Stalker</span></a>
+        <a href="#comprar" class="btn-nav">Empezar Ahora</a>
       </div>
     </nav>
 
     <header class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="eyebrow">Parejas · Redes · Confianza real</div>
-          <h1>
-            La claridad que buscás,<br />
-            <span class="grad">sin convertirte en detective.</span>
-          </h1>
-          <p class="lead">
-            Las peores peleas no empiezan en el chat: empiezan en tu cabeza, a las 2:14, repitiendo historias.
-            <strong>AppStalker</strong> es el tablero compartido para parejas que eligen reglas claras: lo que se ve,
-            <strong>lo eligen los dos</strong>. Nada de “por debajo”. Nada de trampas.
-          </p>
-          <ul class="hero-bullets">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              Invitación explícita + aceptación activa. Sin eso, no existe panel.
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              Resúmenes y límites que ustedes definen — alineados a políticas de cada red.
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              Guías de conversación para bajar el celos sin humillar ni acusar.
-            </li>
-          </ul>
-          <div class="btn-row">
-            <a class="btn-main" href="#precio">Quiero mi acceso ahora</a>
-            <a class="btn-ghost" href="#como">Ver cómo funciona</a>
-          </div>
-          <p class="trust-mini">
-            <b>14 días</b> para probar el flujo completo · Cancelás cuando quieras · Soporte en español
-          </p>
+      <div class="hero-glow"></div>
+      <div class="wrap">
+        <div class="eyebrow delayed-content" style="margin-top: 40px;">Complemento Oficial · El Código de la ReConquista</div>
+        <h1>
+          <span>Ya tienes el Código.</span>
+          <span>Ahora ten los ojos.</span>
+        </h1>
+        <p class="hero-desc delayed-content">
+          El <strong>Código de la ReConquista</strong> te dio la estrategia. 
+          <strong>AppStalker</strong> te da la inteligencia en tiempo real. 
+          Mira si tus pasos están funcionando y qué hace ella mientras aplicas el método.
+        </p>
+        <div class="vsl-container" style="margin-top: 40px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #000; padding: 10px;">
+          <vturb-smartplayer id="vid-69fc04babf03e647b35aef8e" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
         </div>
-
-        <div class="mock-wrap">
-          <div class="mock-glow" aria-hidden="true"></div>
-          <div class="mock-phone">
-            <div class="mock-notch"></div>
-            <div class="mock-screen">
-              <div class="mock-header">
-                <span>Panel compartido</span>
-                <div class="mock-dots"><span></span><span></span><span></span></div>
-              </div>
-              <div class="mock-body">
-                <div class="mock-card">
-                  <small>Esta semana · acordado</small>
-                  <strong>Actividad resumida en redes</strong>
-                  <div class="mock-bar"><i></i></div>
-                </div>
-                <div class="mock-card">
-                  <small>Próximo paso</small>
-                  <strong>Check-in de 5 minutos</strong>
-                  <div class="mock-bar" style="margin-top: 10px"><i style="width: 45%"></i></div>
-                </div>
-                <div class="mock-card" style="margin-bottom: 0">
-                  <small>Privacidad</small>
-                  <strong>Pausado por tu pareja · visible para ambos</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a href="#comprar" class="btn-main delayed-content" style="margin-top: 32px;">
+          Obtener Acceso Total — $19/mes
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </header>
 
-    <section class="alt">
+    <div class="delayed-content">
+
+    <section id="problemas">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">El problema real</div>
-          <h2>No es “Instagram”. Es la incertidumbre que te come vivo.</h2>
-          <p class="section-lead">
-            Cuando la confianza se tambalea, el cerebro busca certezas en el lugar equivocado: capturas, horarios, “quién vio qué”.
-            Eso no construye pareja: construye vigilancia y cansancio.
-          </p>
+        <div class="section-title">
+          <h2>El Arma Secreta de tu ReConquista</h2>
+          <p>No apliques el Código a ciegas. AppStalker te permite validar cada movimiento de tu estrategia viendo la reacción real de ella en el mundo digital.</p>
         </div>
         <div class="pain-grid">
           <div class="pain-card">
-            <h3>La ansiedad no se apaga con más datos</h3>
-            <p>
-              Más stalking = más paranoia. AppStalker cambia el juego: menos ruido, más acuerdos explícitos sobre qué compartir y cuándo.
-            </p>
+            <i>🕵️‍♂️</i>
+            <h3>¿Está funcionando el Código?</h3>
+            <p>Descubre si revisa tu perfil durante el "Contacto Cero" o si tus historias están causando el impacto que buscamos.</p>
           </div>
           <div class="pain-card">
-            <h3>El silencio también duele</h3>
-            <p>
-              A veces no es que “pase algo”: es que no hay un canal adulto para hablar de límites. La app te da estructura, no excusas.
-            </p>
+            <i>🌙</i>
+            <h3>Detecta la Competencia</h3>
+            <p>Si hay alguien más intentando arruinar tu reconquista, lo sabrás antes que nadie. Anticipación total.</p>
           </div>
           <div class="pain-card">
-            <h3>Sin consentimiento, no hay producto</h3>
-            <p>
-              Si tu objetivo es espiar sin que la otra persona sepa, esto no es para vos — y nunca lo será. El diseño entero lo impide por principio.
-            </p>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <strong>2</strong>
-            <span>personas, 1 mismo tablero</span>
-          </div>
-          <div class="stat">
-            <strong>0</strong>
-            <span>acceso oculto prometido</span>
-          </div>
-          <div class="stat">
-            <strong>100%</strong>
-            <span>revocable por cualquiera de los dos</span>
+            <i>🔒</i>
+            <h3>Blindaje de Estrategia</h3>
+            <p>Evita errores impulsivos. Al saber exactamente qué está haciendo, puedes mantener la calma y ejecutar el Código con precisión quirúrgica.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="como">
+    <section id="features" style="background: var(--surface);">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">Cómo funciona</div>
-          <h2>Tres pasos. Cero ambigüedad.</h2>
-          <p class="section-lead">
-            Flujo pensado para que nadie se sienta “atrapado”. Si en algún momento uno corta, el acuerdo digital se corta también.
-          </p>
-        </div>
-        <div class="features">
-          <div class="feat">
-            <div class="feat-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-content">
+              <span class="feature-badge">MÓDULO DE REDES SOCIALES</span>
+              <h3>Vigilancia de Instagram y TikTok</h3>
+              <p>Monitorea cada "Me Gusta", cada nuevo seguidor y cada comentario. Sabrás exactamente con quién está interactuando en tiempo real, incluso si intenta ocultarlo.</p>
+              <ul class="price-list">
+                <li>Registro de nuevos seguidos/seguidores</li>
+                <li>Análisis de likes en perfiles específicos</li>
+                <li>Alertas de interacciones repetidas</li>
+              </ul>
             </div>
-            <h3>1. Invitás con intención clara</h3>
-            <p>
-              Decís qué buscás (menos ansiedad, más transparencia, límites en redes) y enviás invitación. Sin sorpresas, sin presión escondida.
-            </p>
           </div>
-          <div class="feat">
-            <div class="feat-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="11" width="18" height="11" rx="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
+
+          <div class="feature-item">
+            <div class="feature-content">
+              <span class="feature-badge">TECNOLOGÍA GHOST-TRACK</span>
+              <h3>Alertas de Proximidad Digital</h3>
+              <p>¿Se conectaron al mismo tiempo ella y "ese amigo"? Nuestro sistema de correlación te avisa cuando dos perfiles sospechosos están activos simultáneamente.</p>
+              <ul class="price-list">
+                <li>Mapa de calor de actividad</li>
+                <li>Detección de patrones de chat</li>
+                <li>Modo sigilo indetectable</li>
+              </ul>
             </div>
-            <h3>2. La otra persona acepta y configura</h3>
-            <p>
-              Elige qué conectar, con qué granularidad, y puede pausar o revocar cuando quiera. Lo ves reflejado en el panel: transparencia bilateral.
-            </p>
-          </div>
-          <div class="feat">
-            <div class="feat-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 20V10M18 20V4M6 20v-4" />
-              </svg>
-            </div>
-            <h3>3. Comparten un tablero acordado</h3>
-            <p>
-              Un solo lugar para “qué pasó esta semana” en redes, check-ins y acuerdos — en lugar de refrescar perfiles como obsesión.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="alt">
+    <section id="comprar" class="pricing">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">Comparación honesta</div>
-          <h2>AppStalker vs. quedarte despierto stalkeando</h2>
-          <p class="section-lead">
-            Una opción te devuelve sueño y conversación. La otra solo te da más dudas.
-          </p>
+        <div class="section-title">
+          <h2>Tu Paz Mental Vale Más que $19</h2>
+          <p>No dejes que la duda consuma tus noches. Toma el control hoy mismo con nuestra oferta de lanzamiento.</p>
         </div>
-        <div class="compare">
-          <div class="compare-row compare-head">
-            <div></div>
-            <div>Stalkear solo</div>
-            <div style="color: #c4b5fd">AppStalker</div>
-          </div>
-          <div class="compare-row">
-            <div>Acuerdos explícitos</div>
-            <div class="bad">No</div>
-            <div class="ok">Sí</div>
-          </div>
-          <div class="compare-row">
-            <div>La otra persona controla su parte</div>
-            <div class="bad">No aplica</div>
-            <div class="ok">Sí</div>
-          </div>
-          <div class="compare-row">
-            <div>Menos compulsión nocturna</div>
-            <div class="bad">Empeora</div>
-            <div class="ok">Enfocado en eso</div>
-          </div>
-          <div class="compare-row">
-            <div>Legal y alineado a políticas</div>
-            <div class="bad">Riesgoso</div>
-            <div class="ok">Diseñado para eso</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">Voces reales (ejemplo)</div>
-          <h2>Lo que cambia cuando dejás de adivinar</h2>
-          <p class="section-lead">
-            Estos testimonios son ilustrativos; reemplazalos con reviews verificadas de tus clientes.
-          </p>
-        </div>
-        <div class="testimonials">
-          <div class="quote">
-            <p>
-              “Por fin dejamos de pelear por ‘lo que viste en Instagram’. Ahora hay reglas y las dos sabemos qué está conectado.”
-            </p>
-            <footer><strong>Lucía</strong> · pareja 4 años · AR</footer>
-          </div>
-          <div class="quote">
-            <p>
-              “No es magia: es estructura. El check-in de 5 minutos nos salvó de discusiones de 2 horas.”
-            </p>
-            <footer><strong>Diego</strong> · convive · MX</footer>
-          </div>
-          <div class="quote">
-            <p>
-              “Lo más valioso es poder pausar sin drama. Si uno necesita espacio, se ve en el panel y listo.”
-            </p>
-            <footer><strong>Valentina</strong> · a distancia · CO</footer>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="alt" id="precio">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">Inversión</div>
-          <h2>Un precio. Toda la claridad.</h2>
-          <p class="section-lead">
-            Menos que una cena para dos. Más barato que una sesión de terapia de urgencia después de una pelea fea.
-          </p>
-        </div>
-        <div class="pricing-block">
-          <div class="pricing-badge">Acceso completo</div>
-          <div style="font-size: 0.9rem; color: var(--muted); margin-top: 8px">AppStalker</div>
-          <div class="price-big">19 <span>USD / mes</span></div>
-          <p style="margin: 0; color: var(--muted); font-size: 0.95rem">Cancelás cuando quieras. Sin permanencia.</p>
+        <div class="pricing-card">
+          <div class="price">$19 <span>/ mes</span></div>
+          <p style="color: var(--muted); margin-bottom: 32px">Acceso Instantáneo e Ilimitado</p>
           <ul class="price-list">
-            <li>
-              <span class="ok">✓</span>
-              Panel compartido con permisos claros
-            </li>
-            <li>
-              <span class="ok">✓</span>
-              Invitación, aceptación y revocación visibles
-            </li>
-            <li>
-              <span class="ok">✓</span>
-              Guías de conversación y check-ins
-            </li>
-            <li>
-              <span class="ok">✓</span>
-              Soporte en español
-            </li>
+            <li>Monitoreo de Redes Sociales 24/7</li>
+            <li>Alertas de Conexión en Tiempo Real</li>
+            <li>Detección de Apps y Cuentas Ocultas</li>
+            <li>Soporte Prioritario VIP</li>
+            <li><strong>Cancela cuando quieras, sin preguntas</strong></li>
           </ul>
-          <a class="btn-main" href="#" style="width: 100%">Activar acceso — 19 USD/mes</a>
+          <div id="hotmart-sales-funnel"></div>
+          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 16px;">
+            Pago seguro cifrado por SSL. Acceso enviado por email al instante.
+          </p>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="faq">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-kicker">FAQ</div>
-          <h2>Preguntas que tenés que hacerte antes de pagar</h2>
+        <div class="section-title">
+          <h2>Preguntas Frecuentes</h2>
         </div>
-        <div class="faq-wrap">
-          <details class="faq-item">
-            <summary>¿Esto me permite ver todo lo que hace mi pareja en redes?</summary>
-            <p>
-              No automáticamente y nunca a escondidas. Solo ves lo que ambos acuerdan conectar y mostrar, dentro de lo permitido por cada plataforma.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Es legal?</summary>
-            <p>
-              Sí, cuando hay consentimiento informado de adultos y se respetan leyes locales y términos de uso de las redes. El usuario es responsable del uso ético y legal.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Y si mi pareja no quiere?</summary>
-            <p>
-              Entonces no hay producto que “hackear” la situación. AppStalker es para quienes eligen transparencia mutua. El rechazo también es información valiosa sobre límites.
-            </p>
-          </details>
-          <details class="faq-item">
-            <summary>¿Hay permanencia o letra chica?</summary>
-            <p>
-              No hay permanencia: 19 USD al mes y cancelás cuando quieras desde tu cuenta.
-            </p>
-          </details>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <h3>¿Es realmente indetectable?</h3>
+            <p>Sí. Nuestro software funciona a nivel de servidor de datos, por lo que no requiere instalación física en el dispositivo objetivo ni deja rastro alguno.</p>
+          </div>
+          <div class="pain-card">
+            <h3>¿Cómo recibo la información?</h3>
+            <p>Tendrás acceso a un panel de control privado (Dashboard) donde podrás ver todos los datos centralizados y configurar tus alertas al móvil.</p>
+          </div>
+          <div class="pain-card">
+            <h3>¿Puedo cancelar en cualquier momento?</h3>
+            <p>Absolutamente. No tenemos contratos de permanencia. Si sientes que ya sabes lo que necesitabas, puedes cancelar con un solo clic.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <div class="sticky-cta">
+    <footer>
       <div class="wrap">
-        <h2>¿Listo para dormir sin refrescar el feed?</h2>
-        <p class="section-lead" style="margin-bottom: 22px">
-          Entrá con intención sana: acuerdos claros, menos ansiedad, más respeto. Si buscás otra cosa, esta app no va a ser tu excusa.
-        </p>
-        <a class="btn-main" href="#precio">Sí, quiero AppStalker — 19 USD/mes</a>
+        <div class="logo footer-logo">App<span>Stalker</span></div>
+        <p>© 2026 AppStalker. Todos los derechos reservados.</p>
+        <div class="warning-box">
+          AVISO LEGAL Y ÉTICO: AppStalker es una herramienta diseñada para el monitoreo de seguridad y transparencia personal. El uso de este software para espiar o acosar a personas sin su consentimiento puede ser ilegal en su jurisdicción. El usuario asume toda la responsabilidad por el uso legal y ético de la herramienta. No nos hacemos responsables del mal uso de la información obtenida.
+        </div>
       </div>
-    </div>
-
-    <footer class="site-footer">
-      <div class="legal-box">
-        <strong>Aviso importante:</strong> AppStalker es una herramienta de transparencia voluntaria entre personas que consienten. Prohibido usarla para acosar, vigilar sin permiso o violar privacidad. Cumplí la ley y las políticas de cada red social.
-      </div>
-      <p>© AppStalker · Reemplazá enlaces de pago y textos legales según tu negocio.</p>
     </footer>
+    </div>
+    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+    </script>
+    <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7f102f78-9be1-41e8-a92a-3fe5fe747719/players/69fc04babf03e647b35aef8e/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+    
+    <script>
+      // Delay content for 1:25 (85 seconds)
+      setTimeout(function() {
+        const delayedElements = document.querySelectorAll('.delayed-content');
+        delayedElements.forEach(el => {
+          el.style.display = 'block';
+        });
+      }, 85000);
+    </script>
   </body>
 </html>
