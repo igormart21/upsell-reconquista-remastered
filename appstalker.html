@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AppStalker: transparencia digital consciente para parejas. Solo con consentimiento mutuo. 19 USD/mes, cancela cuando quieras."
+    />
+    <title>AppStalker — Transparencia digital para parejas</title>
+    <style>
+      :root {
+        --bg: #07080d;
+        --surface: #10121a;
+        --border: #232636;
+        --text: #f4f5f8;
+        --muted: #9aa3b8;
+        --accent: #00d4aa;
+        --accent-dim: rgba(0, 212, 170, 0.15);
+        --gold: #f5c542;
+        --danger: #c62828;
+        --radius: 14px;
+        --max: 1080px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .legal-banner {
+        background: #1a1520;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 16px;
+        text-align: center;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+
+      .legal-banner strong {
+        color: var(--gold);
+      }
+
+      header.hero {
+        padding: 48px 20px 56px;
+        background:
+          radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 212, 170, 0.22), transparent),
+          var(--bg);
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+
+      .badge {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--muted);
+      }
+
+      .badge--accent {
+        border-color: rgba(0, 212, 170, 0.45);
+        background: var(--accent-dim);
+        color: var(--accent);
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(1.85rem, 5vw, 2.75rem);
+        font-weight: 800;
+        line-height: 1.12;
+        text-align: center;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-sub {
+        margin: 0 auto 28px;
+        max-width: 640px;
+        text-align: center;
+        font-size: 1.08rem;
+        color: var(--muted);
+      }
+
+      .hero-sub em {
+        color: var(--text);
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 16px 28px;
+        border-radius: 999px;
+        border: none;
+        background: linear-gradient(135deg, #00e6b8, #00a884);
+        color: #04120f;
+        font-weight: 800;
+        font-size: 1rem;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(0, 212, 170, 0.35);
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.06);
+      }
+
+      .micro-trust {
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .micro-trust span {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      section {
+        padding: 56px 20px;
+      }
+
+      section.alt {
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+        text-align: center;
+        font-weight: 800;
+      }
+
+      .section-lead {
+        margin: 0 auto 40px;
+        max-width: 680px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .grid-3 {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+      }
+
+      .alt .card {
+        background: #0c0e14;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+        font-weight: 800;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .steps {
+        display: grid;
+        gap: 20px;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .step {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      .step-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--accent-dim);
+        color: var(--accent);
+        font-weight: 800;
+        display: grid;
+        place-items: center;
+      }
+
+      .pricing {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 32px 28px;
+        border-radius: var(--radius);
+        border: 2px solid rgba(245, 197, 66, 0.35);
+        background: linear-gradient(180deg, #151821 0%, #0c0e14 100%);
+        text-align: center;
+      }
+
+      .price-tag {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 8px 0 4px;
+      }
+
+      .price-tag small {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .faq details {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
+        background: var(--surface);
+      }
+
+      .faq summary {
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .faq p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      footer {
+        padding: 32px 20px 48px;
+        text-align: center;
+        font-size: 0.78rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      .disclaimer {
+        max-width: 720px;
+        margin: 0 auto 16px;
+        padding: 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(198, 40, 40, 0.35);
+        background: rgba(198, 40, 40, 0.08);
+        color: #e8b4b4;
+        line-height: 1.45;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="legal-banner">
+      <strong>Uso exclusivo con consentimiento mutuo.</strong> AppStalker no permite ni respalda el acceso a cuentas de terceros sin su autorización explícita. Cumple las leyes y políticas de las plataformas.
+    </div>
+
+    <header class="hero">
+      <div class="wrap">
+        <div class="badge-row">
+          <span class="badge badge--accent">Para parejas</span>
+          <span class="badge">Transparencia consciente</span>
+          <span class="badge">Cancela cuando quieras</span>
+        </div>
+        <h1>
+          Deja de adivinar en redes.<br />
+          <span style="color: var(--accent)">AppStalker</span> te da claridad — cuando ambos dicen que sí.
+        </h1>
+        <p class="hero-sub">
+          La ansiedad digital mata la confianza. AppStalker es un espacio acordado donde
+          <em>los dos</em> eligen qué compartir y cómo verlo: actividad resumida, rutinas y señales que
+          <em>vosotros</em> definen — sin trampas, sin acceso oculto, sin violar reglas de las redes.
+        </p>
+        <div class="cta-row">
+          <a class="btn-primary" href="#precio">Quiero empezar — 19 USD/mes</a>
+        </div>
+        <p class="micro-trust">
+          <span>14 días</span> para probar el flujo completo · Sin permanencia · Soporte en español
+        </p>
+      </div>
+    </header>
+
+    <section>
+      <div class="wrap">
+        <h2>Si la duda te consume, la transparencia consciente te devuelve el control emocional</h2>
+        <p class="section-lead">
+          No se trata de vigilar: se trata de acordar reglas claras, ver lo mismo que la otra persona acepta mostrar y bajar el ruido mental. Eso es lo que diferencia a parejas que se hunden en suposiciones de las que avanzan con acuerdos adultos.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Invitación y aceptación</h3>
+            <p>
+              La otra persona recibe una invitación clara. Sin aceptación activa, no hay panel compartido. Punto.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Resúmenes, no “hackeos”</h3>
+            <p>
+              Lo que ves es lo que ambos conectan de forma permitida por las plataformas y por vuestra propia configuración de privacidad.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Conversación guiada</h3>
+            <p>
+              Prompts y check-ins para hablar de límites, celos y expectativas sin pelea circular de tres horas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap">
+        <h2>Cómo funciona en 3 pasos</h2>
+        <p class="section-lead">
+          Diseñado para que nadie se sienta atrapado: cada paso requiere confirmación explícita de ambas partes.
+        </p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <strong>Creás tu cuenta y enviás invitación</strong>
+              <p style="margin-top: 8px; color: var(--muted); font-size: 0.95rem">
+                Explicás en la propia invitación qué querés compartir y por qué. Transparencia desde el primer mensaje.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <strong>La otra persona acepta y configura su parte</strong>
+              <p style="margin-top: 8px; color: var(--muted); font-size: 0.95rem">
+                Elige qué fuentes conectar y qué nivel de detalle mostrar. Puede pausar o revocar en cualquier momento.
+              </p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <strong>Veis el mismo tablero acordado</strong>
+              <p style="margin-top: 8px; color: var(--muted); font-size: 0.95rem">
+                Un solo lugar para “qué pasó esta semana” en redes, sin stalkear perfiles a las 3 de la mañana.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Lo que ganás con AppStalker</h2>
+        <p class="section-lead">
+          Menos ansiedad reactiva, más acuerdos explícitos. Esto es lo que notan las parejas que lo usan con honestidad.
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Menos “¿y si…?”</h3>
+            <p>
+              Cuando la información fluye por canales acordados, baja la compulsión de revisar historias y capturas como detective.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Más respeto real</h3>
+            <p>
+              El respeto no es no mirar: es mirar lo que la otra persona eligió mostrar, sabiendo que puede retirarlo.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Conversaciones mejores</h3>
+            <p>
+              Guías para hablar de límites sin acusar: foco en necesidades, no en juicios.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="precio">
+      <div class="wrap">
+        <h2>Precio simple. Salida simple.</h2>
+        <p class="section-lead">
+          Un solo plan para empezar hoy. Sin letra chica sobre permanencias forzosas.
+        </p>
+        <div class="pricing">
+          <div style="font-size: 0.85rem; font-weight: 700; color: var(--gold); text-transform: uppercase">
+            AppStalker — acceso completo
+          </div>
+          <div class="price-tag">19 <small>USD / mes</small></div>
+          <p style="margin: 0 0 20px; color: var(--muted); font-size: 0.95rem">
+            Cancelás cuando quieras desde la cuenta. Sin multas ni llamadas incómodas.
+          </p>
+          <a class="btn-primary" href="#">Activar mi acceso ahora</a>
+          <p style="margin-top: 16px; font-size: 0.8rem; color: var(--muted)">
+            Sustituí el enlace <code>#</code> por tu checkout (Hotmart, Stripe, etc.).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Preguntas frecuentes</h2>
+        <p class="section-lead">Transparencia también en las respuestas.</p>
+        <div class="faq" style="max-width: 720px; margin: 0 auto">
+          <details>
+            <summary>¿Es legal usar AppStalker?</summary>
+            <p>
+              Sí, cuando ambas personas consienten activamente y se respetan las leyes locales y las condiciones de uso de cada red. AppStalker está pensado para ese escenario, no para espiar a alguien sin su saber.
+            </p>
+          </details>
+          <details>
+            <summary>¿Puedo ver la cuenta de mi pareja sin que se entere?</summary>
+            <p>
+              No. Eso no es lo que ofrecemos ni lo que apoyamos. Sin invitación aceptada, no hay acceso compartido.
+            </p>
+          </details>
+          <details>
+            <summary>¿Qué pasa si mi pareja no quiere usar la app?</summary>
+            <p>
+              Entonces no hay producto que forzar: la herramienta existe para quienes eligen transparencia mutua. Podés usar recursos internos de bienestar digital o terapia de pareja para trabajar el tema sin violar privacidad.
+            </p>
+          </details>
+          <details>
+            <summary>¿Hay permanencia?</summary>
+            <p>
+              No. 19 USD al mes y cancelás cuando quieras desde la configuración de la cuenta.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="disclaimer">
+        AppStalker es una herramienta de <strong>transparencia voluntaria entre adultos que consienten</strong>. No uses ninguna tecnología para acosar, vigilar sin permiso ni violar la privacidad de otras personas. El usuario es responsable del cumplimiento de la ley aplicable.
+      </div>
+      <p>© AppStalker · Página de demostración — reemplazá textos legales y enlaces de pago según tu negocio.</p>
+    </footer>
+  </body>
+</html>
