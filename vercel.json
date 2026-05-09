@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/upsell2", "dest": "/upsell2.html" },
+    { "src": "/downsell-acelerador-10x", "dest": "/downsell-acelerador-10x.html" },
+    { "src": "/downsell-reset-emocional", "dest": "/downsell-reset-emocional.html" },
+    { "src": "/appstalker", "dest": "/appstalker.html" },
+    { "src": "/gracias", "dest": "/gracias.html" }
+  ]
+}
