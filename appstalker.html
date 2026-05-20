@@ -354,17 +354,18 @@
       }
 
       .pricing-card::before {
-        content: "OFERTA POR TIEMPO LIMITADO";
+        content: "✦ PAGO ÚNICO · SIN MENSUALIDADES ✦";
         position: absolute;
         top: -15px;
         left: 50%;
         transform: translateX(-50%);
-        background: var(--accent);
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
         padding: 6px 20px;
         border-radius: 99px;
         font-size: 0.75rem;
         font-weight: 900;
         letter-spacing: 1px;
+        white-space: nowrap;
       }
 
       .price {
@@ -374,10 +375,35 @@
         font-family: "Syne", sans-serif;
       }
 
-      .price span {
-        font-size: 1.2rem;
+      .price-old {
+        text-decoration: line-through;
         color: var(--muted);
+        font-size: 1.4rem;
         font-weight: 500;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .price span {
+        font-size: 1rem;
+        color: var(--success);
+        font-weight: 700;
+        display: block;
+        margin-top: 4px;
+      }
+
+      .once-badge {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+        font-size: 0.85rem;
+        font-weight: 800;
+        padding: 6px 16px;
+        border-radius: 99px;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
 
       .price-list {
@@ -462,7 +488,7 @@
           <vturb-smartplayer id="vid-69fc04babf03e647b35aef8e" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
         </div>
         <a href="#comprar" class="btn-main delayed-content" style="margin-top: 32px;">
-          Obtener Acceso Total — $19/mes
+          Obtener Acceso Total — Pago Único
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -531,18 +557,21 @@
     <section id="comprar" class="pricing">
       <div class="wrap">
         <div class="section-title">
-          <h2>Tu Paz Mental Vale Más que $19</h2>
-          <p>No dejes que la duda consuma tus noches. Toma el control hoy mismo con nuestra oferta de lanzamiento.</p>
+          <h2>Una Vez. Para Siempre. Sin Mensualidades.</h2>
+          <p>Paga una sola vez y ten acceso completo para siempre. Sin renovaciones, sin sorpresas, sin tarjeta cargada cada mes.</p>
         </div>
         <div class="pricing-card">
-          <div class="price">$19 <span>/ mes</span></div>
-          <p style="color: var(--muted); margin-bottom: 32px">Acceso Instantáneo e Ilimitado</p>
+          <div class="once-badge">✓ Pago Único · Acceso Vitalicio</div>
+          <div class="price-old">$19/mes · $228/año</div>
+          <div class="price">$47 <span>Solo hoy — pago único</span></div>
+          <p style="color: var(--muted); margin-bottom: 32px">Acceso Instantáneo e Ilimitado · Para Siempre</p>
           <ul class="price-list">
             <li>Monitoreo de Redes Sociales 24/7</li>
             <li>Alertas de Conexión en Tiempo Real</li>
             <li>Detección de Apps y Cuentas Ocultas</li>
             <li>Soporte Prioritario VIP</li>
-            <li><strong>Cancela cuando quieras, sin preguntas</strong></li>
+            <li><strong>Acceso de por vida — pagas una sola vez</strong></li>
+            <li><strong>Sin mensualidades · Sin renovaciones</strong></li>
           </ul>
           <div id="hotmart-sales-funnel"></div>
           <p style="font-size: 0.8rem; color: var(--muted); margin-top: 16px;">
@@ -567,8 +596,8 @@
             <p>Tendrás acceso a un panel de control privado (Dashboard) donde podrás ver todos los datos centralizados y configurar tus alertas al móvil.</p>
           </div>
           <div class="pain-card">
-            <h3>¿Puedo cancelar en cualquier momento?</h3>
-            <p>Absolutamente. No tenemos contratos de permanencia. Si sientes que ya sabes lo que necesitabas, puedes cancelar con un solo clic.</p>
+            <h3>¿Es realmente un pago único?</h3>
+            <p>Sí. Pagas una sola vez y el acceso es tuyo para siempre. No hay mensualidades, no hay renovaciones automáticas, no hay cobros futuros. Una inversión, acceso eterno.</p>
           </div>
         </div>
       </div>
