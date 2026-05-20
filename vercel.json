@@ -7,6 +7,7 @@
     { "src": "/downsell-acelerador-10x", "dest": "/downsell-acelerador-10x.html" },
     { "src": "/downsell-reset-emocional", "dest": "/downsell-reset-emocional.html" },
     { "src": "/appstalker", "dest": "/appstalker.html" },
+    { "src": "/downsell-appstalker", "dest": "/downsell-appstalker.html" },
     { "src": "/gracias", "dest": "/gracias.html" }
   ]
 }

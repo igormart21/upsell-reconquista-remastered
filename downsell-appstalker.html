@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AppStalker: Última oportunidad — acceso completo por solo $10." />
+    <title>AppStalker — Oferta Especial $10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #030305;
+        --surface: #0a0a0f;
+        --elevated: #11111a;
+        --border: rgba(255, 255, 255, 0.06);
+        --text: #ffffff;
+        --muted: #94a3b8;
+        --accent: #8b5cf6;
+        --accent-2: #d946ef;
+        --danger: #ef4444;
+        --gold: #fbbf24;
+        --success: #10b981;
+        --radius: 20px;
+        --max: 1200px;
+        --shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+        --glow: 0 0 40px rgba(139, 92, 246, 0.3);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        opacity: 0.05;
+        z-index: 0;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      nav {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        backdrop-filter: blur(20px);
+        background: rgba(3, 3, 5, 0.8);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: #fff;
+        letter-spacing: -1px;
+      }
+
+      .logo span {
+        background: linear-gradient(to right, var(--accent), var(--accent-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .btn-nav {
+        background: #fff;
+        color: #000;
+        padding: 10px 22px;
+        border-radius: 99px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+
+      .btn-nav:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Alert bar */
+      .alert-bar {
+        background: linear-gradient(135deg, #ef4444, #b91c1c);
+        text-align: center;
+        padding: 14px 24px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        letter-spacing: 0.5px;
+        position: relative;
+        z-index: 99;
+      }
+
+      .alert-bar span {
+        color: var(--gold);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0 100px;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero-glow {
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: var(--danger);
+        margin-bottom: 24px;
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: 99px;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+
+      h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(2.2rem, 7vw, 4rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -2px;
+        margin-bottom: 28px;
+      }
+
+      h1 em {
+        font-style: normal;
+        background: linear-gradient(135deg, var(--gold), #f97316);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero-desc {
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        color: var(--muted);
+        max-width: 700px;
+        margin: 0 auto 40px;
+      }
+
+      .hero-desc strong { color: #fff; }
+
+      .btn-main {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, #ef4444, #b91c1c);
+        color: #fff;
+        padding: 20px 48px;
+        border-radius: 99px;
+        font-size: 1.2rem;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 0 40px rgba(239, 68, 68, 0.35);
+        transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+
+      .btn-main:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(239, 68, 68, 0.45);
+      }
+
+      /* Sections */
+      section { padding: 90px 0; }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+
+      .section-title h2 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .section-title p {
+        color: var(--muted);
+        font-size: 1.15rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Pain cards */
+      .pain-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+
+      .pain-card {
+        background: var(--surface);
+        padding: 36px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        transition: 0.3s;
+      }
+
+      .pain-card:hover {
+        border-color: var(--danger);
+        background: var(--elevated);
+        transform: translateY(-8px);
+      }
+
+      .pain-card i {
+        display: block;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .pain-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .pain-card p { color: var(--muted); }
+
+      /* Features */
+      .features-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 70px;
+      }
+
+      .feature-item {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .feature-badge {
+        display: inline-block;
+        color: var(--accent-2);
+        font-weight: 800;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .feature-item h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        font-family: "Syne", sans-serif;
+      }
+
+      .feature-item p {
+        font-size: 1.05rem;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+
+      .check-list {
+        list-style: none;
+        text-align: left;
+        display: inline-block;
+      }
+
+      .check-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+      }
+
+      .check-list li::before {
+        content: "✓";
+        color: var(--success);
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      /* Pricing */
+      .pricing {
+        background: radial-gradient(circle at center, #150a0a 0%, #030305 100%);
+      }
+
+      .pricing-card {
+        max-width: 520px;
+        margin: 0 auto;
+        background: var(--elevated);
+        padding: 60px 40px;
+        border-radius: 32px;
+        border: 2px solid var(--danger);
+        text-align: center;
+        position: relative;
+        box-shadow: 0 40px 100px rgba(0,0,0,0.5), 0 0 60px rgba(239,68,68,0.1);
+      }
+
+      .pricing-card::before {
+        content: "🔥 ÚLTIMA OPORTUNIDAD — OFERTA EXCLUSIVA";
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #ef4444, #b91c1c);
+        padding: 7px 22px;
+        border-radius: 99px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 1px;
+        white-space: nowrap;
+      }
+
+      .once-badge {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+        font-size: 0.85rem;
+        font-weight: 800;
+        padding: 6px 16px;
+        border-radius: 99px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .price-old {
+        text-decoration: line-through;
+        color: var(--muted);
+        font-size: 1.3rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .price {
+        font-size: 5rem;
+        font-weight: 900;
+        font-family: "Syne", sans-serif;
+        line-height: 1;
+        margin: 12px 0 6px;
+        background: linear-gradient(135deg, #fff 40%, #fca5a5);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .price-label {
+        font-size: 1rem;
+        color: var(--success);
+        font-weight: 700;
+        margin-bottom: 24px;
+        display: block;
+      }
+
+      .price-list {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 36px;
+      }
+
+      .price-list li {
+        padding: 11px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .price-list li::before {
+        content: "✓";
+        color: var(--success);
+        font-weight: 900;
+        flex-shrink: 0;
+      }
+
+      /* Footer */
+      footer {
+        padding: 70px 0;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .footer-logo { margin-bottom: 20px; }
+
+      .warning-box {
+        background: rgba(239, 68, 68, 0.05);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 800px;
+        margin: 36px auto 0;
+        color: #fca5a5;
+        font-size: 0.85rem;
+        text-align: left;
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 2.4rem; }
+        .hero { padding: 50px 0 70px; }
+        .pricing-card { padding: 50px 24px; }
+        .price { font-size: 4rem; }
+        .pricing-card::before { font-size: 0.6rem; padding: 6px 14px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <div class="alert-bar">
+      ⚠️ Espera — tenemos una <span>oferta especial de último momento</span> solo para ti
+    </div>
+
+    <nav>
+      <div class="wrap nav-inner">
+        <a href="#" class="logo">App<span>Stalker</span></a>
+        <a href="#comprar" class="btn-nav">Quiero los $10</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-glow"></div>
+      <div class="wrap">
+        <div class="eyebrow" style="margin-top: 20px;">Oferta de Rescate · Solo Esta Vez</div>
+        <h1>
+          Entendemos.<br/>
+          Entonces te lo damos por<br/>
+          <em>solo $10.</em>
+        </h1>
+        <p class="hero-desc">
+          Rechazaste el acceso completo a <strong>AppStalker</strong>, pero sabemos que la duda sigue ahí.
+          Por eso, esta es tu <strong>única oportunidad</strong> de obtener todo el acceso
+          por el precio más bajo que jamás ofreceremos.
+        </p>
+
+        <div class="vsl-container" style="margin: 0 auto 40px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #000; padding: 10px; max-width: 420px;">
+          <vturb-smartplayer id="vid-69fc04babf03e647b35aef8e" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+        </div>
+
+        <a href="#comprar" class="btn-main">
+          Sí, quiero acceso por $10
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 14px;">Esta oferta desaparece cuando cierres esta página</p>
+      </div>
+    </header>
+
+    <section id="porque">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>¿Por Qué $10 y No Más?</h2>
+          <p>Porque preferimos que tengas la herramienta y la uses, a que te vayas sin ninguna ventaja en tu reconquista.</p>
+        </div>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <i>🕵️‍♂️</i>
+            <h3>¿Está funcionando el Código?</h3>
+            <p>Descubre si ella revisa tu perfil durante el "Contacto Cero" o si tus historias están generando el impacto que buscas.</p>
+          </div>
+          <div class="pain-card">
+            <i>🌙</i>
+            <h3>Detecta la Competencia</h3>
+            <p>Si hay alguien más interfiriendo en tu reconquista, lo sabrás antes que nadie. Anticipación total.</p>
+          </div>
+          <div class="pain-card">
+            <i>🔒</i>
+            <h3>Ejecuta con Precisión</h3>
+            <p>Evita errores impulsivos. Al saber exactamente qué está haciendo, mantienes la calma y aplicas el Código con frialdad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" style="background: var(--surface);">
+      <div class="wrap">
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-badge">MÓDULO DE REDES SOCIALES</span>
+            <h3>Vigilancia de Instagram y TikTok</h3>
+            <p>Monitorea cada "Me Gusta", cada nuevo seguidor y cada comentario. Sabrás exactamente con quién está interactuando en tiempo real, incluso si intenta ocultarlo.</p>
+            <ul class="check-list">
+              <li>Registro de nuevos seguidos/seguidores</li>
+              <li>Análisis de likes en perfiles específicos</li>
+              <li>Alertas de interacciones repetidas</li>
+            </ul>
+          </div>
+
+          <div class="feature-item">
+            <span class="feature-badge">TECNOLOGÍA GHOST-TRACK</span>
+            <h3>Alertas de Proximidad Digital</h3>
+            <p>¿Se conectaron al mismo tiempo ella y "ese amigo"? Nuestro sistema de correlación te avisa cuando dos perfiles sospechosos están activos simultáneamente.</p>
+            <ul class="check-list">
+              <li>Mapa de calor de actividad</li>
+              <li>Detección de patrones de chat</li>
+              <li>Modo sigilo indetectable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comprar" class="pricing">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>$10 — Única Vez. Para Siempre.</h2>
+          <p>El mismo acceso completo. El mismo poder. Solo que esta vez, al precio más bajo posible. Solo en esta página.</p>
+        </div>
+        <div class="pricing-card">
+          <div class="once-badge">✓ Pago Único · Acceso Vitalicio</div>
+          <div class="price-old">Precio normal: $19</div>
+          <div class="price">$10</div>
+          <span class="price-label">Pago único — Sin mensualidades · Sin renovaciones</span>
+          <p style="color: var(--muted); margin-bottom: 28px;">Acceso completo e ilimitado para siempre</p>
+          <ul class="price-list">
+            <li>Monitoreo de Redes Sociales 24/7</li>
+            <li>Alertas de Conexión en Tiempo Real</li>
+            <li>Detección de Apps y Cuentas Ocultas</li>
+            <li>Soporte Prioritario VIP</li>
+            <li><strong>Acceso de por vida — pagas una sola vez</strong></li>
+            <li><strong>Sin mensualidades · Sin renovaciones</strong></li>
+          </ul>
+
+          <!-- HOTMART - Sales Funnel Widget -->
+          <!--- sales funnel container --->
+          <div id="hotmart-sales-funnel"></div>
+
+          <!--- script load and setup --->
+          <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+          <script>
+checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+          </script>
+          <!-- HOTMART - Sales Funnel Widget -->
+
+          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 16px;">
+            Pago seguro cifrado por SSL. Acceso enviado por email al instante.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Preguntas Frecuentes</h2>
+        </div>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <h3>¿Por qué $10 y no $19?</h3>
+            <p>Esta es una oferta exclusiva de rescate para quienes no tomaron la oferta principal. Es la última oportunidad de acceder a AppStalker a un precio reducido. No se repite.</p>
+          </div>
+          <div class="pain-card">
+            <h3>¿Es realmente un pago único?</h3>
+            <p>Sí. Pagas $10 una sola vez y el acceso es tuyo para siempre. Sin mensualidades, sin renovaciones automáticas, sin cobros futuros.</p>
+          </div>
+          <div class="pain-card">
+            <h3>¿Cómo recibo el acceso?</h3>
+            <p>Al instante por email. Tendrás un panel de control privado con todos los datos centralizados y alertas configurables en tu móvil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="logo footer-logo">App<span>Stalker</span></div>
+        <p>© 2026 AppStalker. Todos los derechos reservados.</p>
+        <div class="warning-box">
+          AVISO LEGAL Y ÉTICO: AppStalker es una herramienta diseñada para el monitoreo de seguridad y transparencia personal. El uso de este software para espiar o acosar a personas sin su consentimiento puede ser ilegal en su jurisdicción. El usuario asume toda la responsabilidad por el uso legal y ético de la herramienta. No nos hacemos responsables del mal uso de la información obtenida.
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/7f102f78-9be1-41e8-a92a-3fe5fe747719/players/69fc04babf03e647b35aef8e/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+  </body>
+</html>
